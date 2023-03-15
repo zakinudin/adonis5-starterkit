@@ -23,3 +23,16 @@ import Route from '@ioc:Adonis/Core/Route'
 Route.get('/', async ({ view }) => {
   return view.render('welcome')
 })
+
+Route.get('/login', 'AuthController.getLogin')
+Route.post('/login', 'AuthController.postLogin')
+Route.get('/register', 'AuthController.getRegister')
+Route.post('/register', 'AuthController.postRegister')
+
+Route.group(() => {
+  Route.get('/home', async ({ view }) => {
+    return view.render('home', { 'is_active': 'home' })
+  })
+})
+
+
