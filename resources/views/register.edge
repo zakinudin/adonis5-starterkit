@@ -30,25 +30,35 @@
 
       <form method="POST" action="/register">
         {{ csrfField() }}
+        
         <div class="signin-sidebar">
           <div class="signin-sidebar-body">
             <a href="#" class="sidebar-logo mg-b-40"><span>cassie</span></a>
             <h4 class="signup-title">Create New Account!</h4>
             <h5 class="signup-subtitle">It's free and only takes a minute.</h5>
-
+        
             <div class="signin-form">
               <div class="form-group">
-                  <label>Username</label>
-                  <input type="text" name="username" class="form-control" placeholder="Enter your username" value="">                        
+                <label>Username</label>
+                <input type="text" name="username" class="form-control {{ flashMessages.has('errors.username') ? 'is-invalid' : '' }}" placeholder="Enter your username" value="">                        
+                @if(flashMessages.has('errors.username'))
+                  <div class="invalid-feedback">{{ flashMessages.get('errors.username') }}</div>
+                @end
               </div>
               <div class="form-group">
-                  <label>Email address</label>
-                  <input type="email" name="email" class="form-control" placeholder="Enter your email address" value="">                        
+                <label>Email address</label>
+                <input type="email" name="email" class="form-control {{ flashMessages.has('errors.email') ? 'is-invalid' : '' }}" placeholder="Enter your email address" value="">                        
+                @if(flashMessages.has('errors.email'))
+                  <div class="invalid-feedback">{{ flashMessages.get('errors.email') }}</div>
+                @end
               </div>
 
               <div class="form-group">
-                  <label>Password</label>
-                  <input type="password" name="password" class="form-control" placeholder="Enter your password" value="">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control {{ flashMessages.has('errors.password') ? 'is-invalid' : '' }}" placeholder="Enter your password" value="">
+                @if(flashMessages.has('errors.password'))
+                  <div class="invalid-feedback">{{ flashMessages.get('errors.password') }}</div>
+                @end
               </div>
 
               <div class="form-group mg-b-30">
